@@ -1,17 +1,19 @@
 {
   "name": "mediumclone_vue",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "ng build",
+    "lint": "vue-cli-service lint",
+    "start": "node main.js",
+
+    "heroku-postbuild": "ng build --prod"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
-    "http-server": "^0.12.3",
     "query-string": "^6.13.8",
     "vue": "^2.6.11",
     "vue-axios": "^3.2.2",

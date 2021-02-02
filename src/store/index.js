@@ -21,7 +21,8 @@ export default new Vuex.Store({
     auth,
     feed,
     tags,
-    // article
+    // article f47aae4e-797e-4c82-b058-b604646da633
+
   }
 })
  
