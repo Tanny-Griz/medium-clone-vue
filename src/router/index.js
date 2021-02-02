@@ -5,7 +5,7 @@ import YourFeed from '../views/YourFeed'
 import TagFeed from '../views/TagFeed'
 import Register from '@/views/Register'
 import Login from '@/views/Login'
-import Article from '@/views/Article'
+// import Article from '@/views/Article'
 
 Vue.use(VueRouter)
 
@@ -40,11 +40,11 @@ const routes = [
     name: 'createArticle',
     component: GlobalFeed
   },
-  {
-    path: '/articles/:slug',
-    name: 'article',
-    component: Article
-  },
+  // {
+  //   path: '/articles/:slug',
+  //   name: 'article',
+  //   component: Article
+  // },
   {
     path: '/articles/:slug/edit',
     name: 'editArticle',
