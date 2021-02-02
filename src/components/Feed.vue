@@ -33,7 +33,7 @@
                 <h1>{{article.title}}</h1>
                 <p>{{article.description}}</p>
                 <span>Read more...</span>
-                TAG LIST
+                <McvTagList :tags="article.tagList" />
             </router-link>
         </div>
         <McvPagination 
@@ -53,6 +53,7 @@ import McvPagination from '@/components/Pagination'
 import {limit} from '@/helpers/vars'
 import {stringify, parseUrl} from 'query-string'
 import McvErrorMessage from '@/components/ErrorMessage'
+import McvTagList from '@/components/TagList'
 
 export default {
     name: 'McvFeed',
@@ -64,7 +65,8 @@ export default {
     },
     components: {
         McvPagination,
-        McvErrorMessage
+        McvErrorMessage,
+        McvTagList
     },
     // декларативно и имутабельно, просто опис переменные, но не меняем ничего!90% случ
     computed: {
