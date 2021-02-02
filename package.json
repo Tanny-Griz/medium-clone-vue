@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "ng build",
     "lint": "vue-cli-service lint",
-    "start": "node main.js",
+    "start": "main.js",
 
     "heroku-postbuild": "ng build --prod"
   },
