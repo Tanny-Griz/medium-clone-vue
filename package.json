@@ -2,6 +2,9 @@
   "name": "mediumclone_vue",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": "14.15.4"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "ng build",
