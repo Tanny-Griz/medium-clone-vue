@@ -6,8 +6,6 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-
-    "dev": "cross-env APP_ENV=dev webpack-serve --require @babel/register"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -28,11 +26,6 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11",
-
-    "@babel/core": "^7.0.0-rc.1",
-    "@babel/register": "^7.0.0-rc.1",
-    "@babel/preset-env": "^7.0.0-rc.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2"
   },
 
   "babel": {
