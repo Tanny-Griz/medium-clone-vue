@@ -1,5 +1,7 @@
 <template>
   <div>
+    
+    <McvLoading v-if="isLoading" />
     <McvArticleForm 
       :initial-values="initialValues"
       :errors="validationErrors"
@@ -10,45 +12,65 @@
 
 <script>
 // import mapState from 'vuex'
-// import McvArticleForm from '@/components/ArticleForm'
-// import {actionTypes} from '@/store/modules/createArticle'
+import McvArticleForm from '@/components/ArticleForm'
+import McvLoading from '@/components/Loading'
+import {actionTypes} from '@/store/modules/editArticle'
 
-// export default {
-//     name: 'McvCreateArticle',
-//     components: {
-//       McvArticleForm
-//     },
-//     data() {
-//       return {
-//         initialValues: {
-//           title: '',
-//           description: '',
-//           body: '',
-//           tagList: []
-//         },
-//         // validationErrors: null,
-//         // isSubmitting: false
-//       }
-//     },
-//     computed: {
-//       // ...mapState({
-//       //   isSubmitting: state => state.createArticle.isSubmitting,
-//       //   validationErrors: state => state.createArticle.validationErrors
-//       // })
-//       isSubmitting() {
-//         return this.$store.state.createArticle.isSubmitting
-//       },
-//       validationErrors() {
-//         return this.$store.state.createArticle.validationErrors
-//       }
-//     },
-//     methods: {
-//       onSubmit(articleInput) {
-//           this.$store.dispatch(actionTypes.createArticle, {articleInput}).then(article => {
-//           this.$router.push({name: 'article', params: {slug: article.slug}})
-//           })
-//         console.log('sbmt', articleInput);
-//       }
-//     },
-// }
+export default {
+    name: 'McvEditArticle',
+    components: {
+      McvArticleForm,
+      McvLoading
+    },
+    computed: {
+      // ...mapState({
+        // isSubmitting: state => state.editArticle.isSubmitting,
+        // isLoading: state => state.editArticle.isLoading,
+        // article: state => state.editArticle.article,
+        // validationErrors: state => state.editArticle.validationErrors
+      // }),
+      isSubmitting() {
+        return this.$store.state.editArticle.isSubmitting
+      },
+      validationErrors() {
+        return this.$store.state.editArticle.validationErrors
+      },
+      article() {
+        return this.$store.state.editArticle.article
+      },
+      isLoading() {
+        return this.$store.state.editArticle.isLoading
+      },
+      initialValues() {
+          if(!this.article) {
+              return {
+                title: '',
+                description: '',
+                body: '',
+                tagList: []
+              }
+          }
+          return {
+            title: this.article.title,
+            description: this.article.description,
+            body: this.article.body,
+            tagList: this.article.tagList
+          }
+      }
+    },
+    // при инициализации зафетчить данные
+    mounted() {
+        this.$store.dispatch(actionTypes.getArticle, {
+            slug: this.$route.params.slug
+        })
+    },
+    methods: {
+      onSubmit(articleInput) {
+          const slug = this.$route.params.slug
+          this.$store.dispatch(actionTypes.updateArticle, {slug, articleInput}).then(article => {
+            this.$router.push({name: 'article', params: {slug: article.slug}})
+          })
+      }
+    },
+}
 </script>

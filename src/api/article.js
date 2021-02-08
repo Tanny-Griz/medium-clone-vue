@@ -1,5 +1,4 @@
 import axios from '@/api/axios'
-import { response } from 'express'
 
 const getArticle = slug => {
     return axios.get(`/articles/${slug}`).then(response => response.data.article)
@@ -14,7 +13,7 @@ const createArticle = articleInput => {
 }
 
 const updateArticle = (slug, articleInput) => {
-    return axios.put(`/articles/${slug}`, articleInput).then( response => response.data.article)
+    return axios.put(`/articles/${slug}`, articleInput).then(response => response.data.article)
 }
 
 export default {
