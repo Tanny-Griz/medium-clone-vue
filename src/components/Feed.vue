@@ -22,7 +22,10 @@
                     <span class="date">{{article.createdAt}}</span>
                 </div>
                 <div class="pull-xs-right">
-                    ADD TO FAVOR
+                    <McvAddToFavorites 
+                        :is-favorited="article.favorited"
+                        :article-slug="article.slug"
+                        :favorites-count="article.favoritesCount" />
                 </div>
             </div>
             
@@ -54,6 +57,7 @@ import {stringify, parseUrl} from 'query-string'
 import {limit} from '@/helpers/vars'
 import McvErrorMessage from '@/components/ErrorMessage'
 import McvTagList from '@/components/TagList'
+import McvAddToFavorites from '@/components/AddToFavorites'
 
 export default {
     name: 'McvFeed',
@@ -66,7 +70,8 @@ export default {
     components: {
         McvPagination,
         McvErrorMessage,
-        McvTagList
+        McvTagList,
+        McvAddToFavorites
     },
     // декларативно и имутабельно, просто опис переменные, но не меняем ничего!90% случ
     computed: {

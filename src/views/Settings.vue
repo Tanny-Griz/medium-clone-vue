@@ -92,11 +92,13 @@ export default {
     },
     methods: {
         onSubmit() {
-            // console.log('sbmt', this.form)
             this.$store.dispatch(authActionTypes.updateCurrentUser, {currentUserInput: this.form})
         },
         logout() {
-            console.log('lgo');
+            // удаляем из ЛС токен, сетим юзера в null, isLoggedIn = false
+            this.$store.dispatch(authActionTypes.logout).then(() => {
+                this.$router.push({name: 'globalFeed'})
+            })
         }
     }
 
