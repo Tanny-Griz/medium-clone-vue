@@ -1,8 +1,8 @@
 <template>
   <div>
-    
-    <McvLoading v-if="isLoading" />
+    <!-- <McvLoading v-if="isLoading" /> -->
     <McvArticleForm 
+      v-if="initialValues"
       :initial-values="initialValues"
       :errors="validationErrors"
       :is-submitting="isSubmitting" 
@@ -11,44 +11,27 @@
 </template>
 
 <script>
-// import mapState from 'vuex'
+import {mapState} from 'vuex'
 import McvArticleForm from '@/components/ArticleForm'
-import McvLoading from '@/components/Loading'
+// import McvLoading from '@/components/Loading'
 import {actionTypes} from '@/store/modules/editArticle'
 
 export default {
     name: 'McvEditArticle',
     components: {
       McvArticleForm,
-      McvLoading
+      // McvLoading
     },
     computed: {
-      // ...mapState({
-        // isSubmitting: state => state.editArticle.isSubmitting,
-        // isLoading: state => state.editArticle.isLoading,
-        // article: state => state.editArticle.article,
-        // validationErrors: state => state.editArticle.validationErrors
-      // }),
-      isSubmitting() {
-        return this.$store.state.editArticle.isSubmitting
-      },
-      validationErrors() {
-        return this.$store.state.editArticle.validationErrors
-      },
-      article() {
-        return this.$store.state.editArticle.article
-      },
-      isLoading() {
-        return this.$store.state.editArticle.isLoading
-      },
+      ...mapState({
+        isSubmitting: state => state.editArticle.isSubmitting,
+        isLoading: state => state.editArticle.isLoading,
+        article: state => state.editArticle.article,
+        validationErrors: state => state.editArticle.validationErrors
+      }),
       initialValues() {
           if(!this.article) {
-              return {
-                title: '',
-                description: '',
-                body: '',
-                tagList: []
-              }
+              return null
           }
           return {
             title: this.article.title,

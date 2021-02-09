@@ -5,7 +5,7 @@
               <h1>{{article.title}}</h1>
               <div class="article-meta">
                   <router-link :to="{name: 'userProfile', params: {slug: article.author.username}}">
-                      <img :src="article.author.image" alt="">
+                      <img :src="article.author.image" />
                   </router-link>
                   <div class="info">
                     <router-link :to="{name: 'userProfile', 
@@ -30,6 +30,7 @@
       </div>
       <div class="container page">
           <McvLoading v-if="isLoading" />
+          <McvErrorMessage v-if="error" :message="error" />
           <div class="row article-content" v-if="article">
               <div class="col-xs-12">
                   <div>
@@ -47,12 +48,14 @@ import {actionTypes as articleActionTypes} from '@/store/modules/article'
 import {getterTypes as authGetterTypes} from '@/store/modules/auth'
 import {mapState, mapGetters} from 'vuex'
 import McvLoading from '@/components/Loading'
+import McvErrorMessage from '@/components/ErrorMessage'
 import McvTagList from '@/components/TagList'
 
 export default {
     name: 'McvArticle',
     components: {
         McvLoading,
+        McvErrorMessage,
         McvTagList
     },
     computed: {
@@ -72,12 +75,13 @@ export default {
         }
     },
     mounted() {
+        console.log(this.$route);
         this.$store.dispatch(articleActionTypes.getArticle, {slug: this.$route.params.slug})
     },
     methods: {
         deleteArticle() {
             this.$store.dispatch(articleActionTypes.deleteArticle, {slug: this.$route.params.slug}).then(() => {
-                this.$route.push({name: 'globalFeed'})
+                this.$router.push({name: 'globalFeed'})
             })
         }
     }

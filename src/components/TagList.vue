@@ -13,7 +13,7 @@ export default {
     name: 'McvTagList',
     props: {
         tags: {
-            type: Array.isArray,
+            type: Array,
             required: true
         }
     }

@@ -41,6 +41,7 @@ const mutations = {
 }
 
 const actions = {
+    // фетчим по слагу с апи
     [actionTypes.getArticle](context, {slug}) {
         return new Promise(resolve => {
             context.commit(mutationTypes.getArticleStart, slug)

@@ -33,7 +33,7 @@
                 <h1>{{article.title}}</h1>
                 <p>{{article.description}}</p>
                 <span>Read more...</span>
-                <!-- <McvTagList :tags="article.tagList" /> -->
+                <McvTagList :tags="article.tagList" />
             </router-link>
         </div>
         <McvPagination 
@@ -50,10 +50,10 @@
 import {mapState} from 'vuex'
 import {actionTypes} from '@/store/modules/feed'
 import McvPagination from '@/components/Pagination'
-import {limit} from '@/helpers/vars'
 import {stringify, parseUrl} from 'query-string'
+import {limit} from '@/helpers/vars'
 import McvErrorMessage from '@/components/ErrorMessage'
-// import McvTagList from '@/components/TagList'
+import McvTagList from '@/components/TagList'
 
 export default {
     name: 'McvFeed',
@@ -66,7 +66,7 @@ export default {
     components: {
         McvPagination,
         McvErrorMessage,
-        // McvTagList
+        McvTagList
     },
     // декларативно и имутабельно, просто опис переменные, но не меняем ничего!90% случ
     computed: {

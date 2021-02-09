@@ -46,8 +46,7 @@ const mutations = {
     },
     [mutationTypes.getArticleFailure](state) {
         state.isLoading = false
-    },
-
+    }
 }
 
 const actions = {

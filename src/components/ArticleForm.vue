@@ -1,10 +1,10 @@
 <template>
-    <div class="editir-page">
+    <div class="editor-page">
         <div class="container page">
             <div class="row">
                 <div class="col-md-10 offset-md-1 col-xs-12">
                     <McvValidationErrors v-if="errors" :validation-errors="errors" />
-                    <McvErrorMessage />
+                    <!-- <McvErrorMessage /> -->
                     <form @submit.prevent="onSubmit">
                         <fieldset>
                             <fieldset class="form-group">
@@ -53,13 +53,13 @@
 
 <script>
 import McvValidationErrors from '@/components/ValidationErrors'
-import McvErrorMessage from '@/components/ErrorMessage'
+// import McvErrorMessage from '@/components/ErrorMessage'
 
 export default {
     name: 'McvArticleForm',
     components: {
         McvValidationErrors,
-        McvErrorMessage
+        // McvErrorMessage
     },
     props: {
         initialValues: {

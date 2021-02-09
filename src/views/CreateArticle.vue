@@ -9,7 +9,7 @@
 </template>
 
 <script>
-// import mapState from 'vuex'
+import {mapState} from 'vuex'
 import McvArticleForm from '@/components/ArticleForm'
 import {actionTypes} from '@/store/modules/createArticle'
 
@@ -25,29 +25,21 @@ export default {
           description: '',
           body: '',
           tagList: []
-        },
-        // validationErrors: null,
-        // isSubmitting: false
+        }
       }
     },
     computed: {
-      // ...mapState({
-      //   isSubmitting: state => state.createArticle.isSubmitting,
-      //   validationErrors: state => state.createArticle.validationErrors
-      // })
-      isSubmitting() {
-        return this.$store.state.createArticle.isSubmitting
-      },
-      validationErrors() {
-        return this.$store.state.createArticle.validationErrors
-      }
+      ...mapState({
+        isSubmitting: state => state.createArticle.isSubmitting,
+        validationErrors: state => state.createArticle.validationErrors
+      })
     },
     methods: {
       onSubmit(articleInput) {
           this.$store.dispatch(actionTypes.createArticle, {articleInput}).then(article => {
           this.$router.push({name: 'article', params: {slug: article.slug}})
           })
-        console.log('sbmt', articleInput);
+        // console.log('sbmt', articleInput);
       }
     },
 }
