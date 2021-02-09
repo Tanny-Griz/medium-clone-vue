@@ -95,6 +95,9 @@ export default {
         // локальн перем за которой хотим наблюдаьт, перезагр данные на стр!
         currentPage() {
             this.fetchFeed()
+        },
+        apiUrl() {
+            this.fetchFeed()
         }
     },
     mounted() {
@@ -111,7 +114,6 @@ export default {
             })
             const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`
             this.$store.dispatch(actionTypes.getFeed, {apiUrl: apiUrlWithParams})
-
         }
     },
     data() {
